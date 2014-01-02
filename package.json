@@ -1,0 +1,35 @@
+{
+  "name": "ractivore",
+  "version": "0.0.1",
+  "description": "RactiveJS-consuming view handler/templater for Node.JS",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/copongcopong/ractivore.git"
+  },
+  "keywords": [
+    "ractivejs",
+    "view",
+    "template"
+  ],
+  "author": "Earl Celis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/copongcopong/ractivore/issues"
+  },
+  "homepage": "https://github.com/copongcopong/ractivore",
+  "dependencies": {
+    "ractive": "~0.3.9",
+    "stringify-object": "~0.1.7",
+    "merge": "~1.1.2",
+    "kew": "~0.3.0",
+    "deep-extend": "~0.2.6"
+  }
+}

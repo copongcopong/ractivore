@@ -1,0 +1,40 @@
+{{{"<!DOCTYPE html>"}}}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{html.title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+				
+    </head>
+    <body>
+    <div class="container">
+			<ul>
+			{{#html.controllers}}
+			<li><a href="{{.}}">{{.}}</a></li>
+			{{/html.controllers}}	
+			</ul>
+			
+			{{^one}}
+			<p>home.</p>
+			{{/one}}
+			
+			{{#one}}
+				{{>partUno}}
+			{{/one}}
+			
+	  {{>footer}}
+    </div> <!-- /container -->       
+
+
+    </body>
+		<!-- {{>footer}} -->
+		<hr />
+		<p>Footer {{{html.footer}}}</p>
+		<!-- {{/footer}} -->
+
+</html>

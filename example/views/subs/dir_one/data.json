@@ -1,0 +1,4 @@
+{
+	"content": "This data came from a data.json file.",
+	"contentHTML": "<strong>This is bold. HTML unescaped.</strong>"
+}
