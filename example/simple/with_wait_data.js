@@ -12,19 +12,30 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 		}
 	};
 	
+	var unoDataCallback = function(resolve) {
+		var self = this;
+		setTimeout(function(){
+			
+			self.setData({
+				content: " Data loaded to simulate late access. ",
+				contentHTML: "<p><em>Wait from DB or API data</em></p>",
+			});
+			
+			resolve();
+			
+		}, 200);
+	}
+	
 	var unoConfig = {
 		dir: subsdir + '/uno',
-		data: {
-			content: "Uses addSubs(\"subname\", options) ",
-			contentHTML: "<p><em>yeah</em></p>",
-			
-		}
+		data: unoDataCallback
 	};
 	
-	
+	pageConfig.subs = {
+		uno: unoConfig
+	}
 	
 	var page = ractivore();
-	page.addSubs("uno", unoConfig);
 	page.create(pageConfig)
 		.then(function(){
 			//console.log(this, pass);

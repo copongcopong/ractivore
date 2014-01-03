@@ -6,7 +6,8 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 			html: {
 				title: "Ractivore - " + req.url,
 				footer: "<em>2014</em>",
-				controllers: ctrls
+				controllers: ctrls,
+				urlpath: req.url
 			}
 		}
 	};
