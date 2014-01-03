@@ -17,8 +17,8 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 		setTimeout(function(){
 			
 			self.setData({
-				content: " Data loaded to simulate late access. ",
-				contentHTML: "<p><em>Wait from DB or API data</em></p>",
+				content: " Data loaded to simulate late data access. ",
+				contentHTML: "<p><em>Wait from DB or API</em></p>",
 			});
 			
 			resolve();

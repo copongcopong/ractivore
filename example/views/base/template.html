@@ -20,7 +20,7 @@
 					
 						<ul class="nav nav-pills nav-stacked" style="margin: 10px;">
 						{{#html.controllers}}
-							<li><a href="{{.}}">{{.}}</a></li>
+							<li class="{{ ( ( html.urlpath.substr(1) == this ) ? 'active' : '') }}"><a href="{{.}}">{{.}}</a></li>
 						{{/html.controllers}}	
 						</ul>
 						
