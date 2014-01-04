@@ -1,6 +1,20 @@
 var test = require('tape');
 var ractivore = require('../index.js');
 
+test('simple boot dir no template', function (t) {
+		
+		var view = ractivore();
+		var config = {dir: __dirname + '/views/no-template'}
+		view.create(config).then(function(){
+			//test to fail
+			
+		}).fail(function(err){
+			t.equal('template file not found!', err, "missing template fail message should be received.");
+			t.end();
+		});
+    
+});
+
 test('simple boot dir', function (t) {
 		
 		var view = ractivore();
