@@ -173,7 +173,6 @@ test('simple boot dir with partial file "footer.part.html"', function (t) {
 
 test('load partials at config', function (t) {
 		var dt = require(__dirname + '/views/one-with-partial/data.json');
-		console.log(dt);
 		var view = ractivore();
 		var config = {
 			template: __dirname + '/views/one-with-partial/template.html',
@@ -181,7 +180,6 @@ test('load partials at config', function (t) {
 			partials: {
 				footer:  __dirname + '/views/one-with-partial/footer.part.html'
 			}
-			
 		};
 		
 		view.create(config).then(function(){
