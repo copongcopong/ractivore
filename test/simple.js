@@ -9,6 +9,7 @@ test('simple boot dir no template', function (t) {
 			//test to fail
 			
 		}).fail(function(err){
+			t.pass("simulate failure.");
 			t.equal('template file not found!', err, "missing template fail message should be received.");
 			t.end();
 		});
@@ -23,6 +24,105 @@ test('simple boot dir', function (t) {
 			var html = view.rhtml.toHTML();
 			
 			t.ok((html.indexOf('<h1>one</h1>') > -1), "header found");
+			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
+			t.end();
+		});
+    
+});
+
+
+test('using config to setup template and data', function (t) {
+		
+		var view = ractivore();
+		var config = {
+			template: __dirname + '/views/one/template.html',
+			data: {
+				"header": "header",
+				"content": "content"
+			}
+		};
+		
+		view.create(config).then(function(){
+			var html = view.rhtml.toHTML();
+			
+			t.ok((html.indexOf('<h1>header</h1>') > -1), "header found");
+			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
+			t.end();
+		});
+    
+});
+
+test('using config - data via callback using ractivore.setData() ', function (t) {
+		
+		var view = ractivore();
+		var config = {
+			template: __dirname + '/views/one/template.html',
+			data: function(resolve) {
+				this.setData({
+					"header": "header",
+					"content": "content"
+				});
+				resolve();
+			}
+		};
+		
+		view.create(config).then(function(){
+			var html = view.rhtml.toHTML();
+			
+			t.ok((html.indexOf('<h1>header</h1>') > -1), "header found");
+			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
+			t.end();
+		});
+    
+});
+
+
+test('using config - data added via callback using ractivore.callstack() ', function (t) {
+		
+		var view = ractivore();
+		var config = {
+			template: __dirname + '/views/one/template.html',
+			data: {
+				"header": "header",
+			},
+			callstack: function(resolve) {
+				this.setData({
+					"content": "content"
+				});
+				resolve();
+			}
+		};
+		
+		view.create(config).then(function(){
+			var html = view.rhtml.toHTML();
+			
+			t.ok((html.indexOf('<h1>header</h1>') > -1), "header found");
+			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
+			t.end();
+		});
+    
+});
+
+test('using config - data added via callback using ractivore.beforeCreate() ', function (t) {
+		
+		var view = ractivore();
+		var config = {
+			template: __dirname + '/views/one/template.html',
+			data: {
+				"header": "header",
+			},
+			beforeCreate: function(resolve) {
+				this.setData({
+					"content": "content"
+				});
+				resolve();
+			}
+		};
+		
+		view.create(config).then(function(){
+			var html = view.rhtml.toHTML();
+			
+			t.ok((html.indexOf('<h1>header</h1>') > -1), "header found");
 			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
 			t.end();
 		});
