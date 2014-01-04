@@ -14,11 +14,12 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 	
 	var unoDataCallback = function(resolve) {
 		var self = this;
+		self.setData({contentTitle: "Data config as callback"});
 		setTimeout(function(){
 			
 			self.setData({
 				content: " Data loaded to simulate late data access. ",
-				contentHTML: "<p><em>Wait from DB or API</em></p>",
+				contentHTML: "<p><strong>Use case</strong>: <em>Backend calls from DB or API.</em></p>",
 			});
 			
 			resolve();

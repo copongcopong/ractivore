@@ -15,8 +15,8 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 	var unoConfig = {
 		dir: subsdir + '/uno',
 		data: {
-			content: "Uses addSubs(\"subname\", options) ",
-			contentHTML: "<p><em>yeah</em></p>",
+			content: "Uses addSubs(\"subname\", options); Must be used before .create() call. ",
+			contentHTML: "<p><strong>Use case</strong>: Late subview binding.</p>",
 			
 		}
 	};

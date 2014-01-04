@@ -10,7 +10,7 @@ var subsdir = viewdir + '/subs';
 var dir = __dirname;
 var ctrls = [];
 fs.readdirSync(dir).forEach(function(file){
-	if(file !== 'server.js') {
+	if(file !== 'server.js' && file.substr(0, 1) !== '_') {
 		var fname = file.split('.')[0];
 		ctrls.push(fname);
 	}

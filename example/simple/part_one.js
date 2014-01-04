@@ -10,8 +10,9 @@ module.exports = function(req, res, ractivore, basedir, subsdir, ctrls) {
 				urlpath: req.url
 			},
 			one: {
-				content: "Yeah One!",
-				contentHTML: "<strong>One - this is bold.</strong>"
+				contentTitle: "Uses partials",
+				content: "RactiveJS partials",
+				contentHTML: "<strong>Use case:</strong> Headers, footers, navs with/out global data"
 			}
 		},
 		partials: {
