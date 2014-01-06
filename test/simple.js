@@ -22,7 +22,8 @@ test('simple boot dir', function (t) {
 		var config = {dir: __dirname + '/views/one'}
 		view.create(config).then(function(){
 			var html = view.rhtml.toHTML();
-			
+			//console.log(view.rhtml.data);
+			t.ok(typeof view.rhtml.data._dirstats === 'object', "dirstats found");
 			t.ok((html.indexOf('<h1>one</h1>') > -1), "header found");
 			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
 			t.end();
@@ -44,7 +45,6 @@ test('using config to setup template and data', function (t) {
 		
 		view.create(config).then(function(){
 			var html = view.rhtml.toHTML();
-			
 			t.ok((html.indexOf('<h1>header</h1>') > -1), "header found");
 			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
 			t.end();
