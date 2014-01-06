@@ -1,9 +1,9 @@
 var templater = require('./lib/templater');
 var view = require('./lib/viewmaker');
 var ractive = require('ractive/Ractive');
+var ractivoreTpl = templater(ractive);	
 
-exports = module.exports = function() {
-	var ractivoreTpl = templater(ractive);	
-	return new view(ractive, ractivoreTpl);
-		
+exports = module.exports = function(options) {
+	
+	return new view(options, ractive, ractivoreTpl);
 }

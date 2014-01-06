@@ -3,6 +3,7 @@ var viewdir = __dirname + '/tpl';
 var basedir = viewdir + '/base';
 var subsdir = viewdir + '/posts';
 var deepmerge = require('deep-extend');
+var merge = require('merge');
 var fs = require('fs');
 
 var pages = [];
@@ -47,7 +48,7 @@ var BaseView = function(options, req, res) {
 	
 	config = deepmerge(baseConfig, options);
 	
-	page = ractivore();
+	page = ractivore({verbose: true});
 	
 	page.create(config).then(function(){
 		
