@@ -3,7 +3,7 @@ var ractivore = require('../index.js');
 
 test('simple boot dir no template', function (t) {
 		
-		var view = ractivore();
+		var view = ractivore({cacheRactives: false});
 		var config = {dir: __dirname + '/views/no-template'}
 		view.create(config).then(function(){
 			//test to fail
@@ -19,14 +19,18 @@ test('simple boot dir no template', function (t) {
 test('simple boot dir', function (t) {
 		
 		var view = ractivore();
-		var config = {dir: __dirname + '/views/one'}
+		var config = {dir: __dirname + '/views/one'};
+		//console.log(config);
 		view.create(config).then(function(){
+			//console.log("!!!!!!!");
 			var html = view.rhtml.toHTML();
-			//console.log(view.rhtml.data);
+			//console.log(html, html.length, view.rhtml);
 			t.ok(typeof view.rhtml.data._dirstats === 'object', "dirstats found");
 			t.ok((html.indexOf('<h1>one</h1>') > -1), "header found");
 			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
 			t.end();
+		}).fail(function(err){
+			console.error(err);
 		});
     
 });

@@ -2,12 +2,12 @@ var http = require('http');
 var path = require('path');
 var fs = require('fs');
 var ractivore = require('../../index.js');
+var dir = __dirname;
 
-var viewdir = path.resolve('./example/views');
+var viewdir = dir + '/_views';
 var basedir = viewdir + '/base';
 var subsdir = viewdir + '/subs';
 
-var dir = __dirname;
 var ctrls = [];
 fs.readdirSync(dir).forEach(function(file){
 	if(file !== 'server.js' && file.substr(0, 1) !== '_') {
@@ -28,11 +28,11 @@ function dispatcher(req, res) {
 	
 	console.log('request ' + req.url);
 	
-	//console.log('!!!', tail, url);
+	console.log('!!!', tail, url);
 	
 	//console.log(ctrls);
 	if(ctrls.indexOf(url) > -1) {
-		require('./' + url)(req, res, ractivore, basedir, subsdir, ctrls);	
+		require( dir + '/' + url)(req, res, ractivore, basedir, subsdir, ctrls);	
 	} else {
 		res.writeHead(404, { 'Content-Type': 'text/html' });
 		res.end("nada.");
