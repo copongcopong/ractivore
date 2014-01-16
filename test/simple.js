@@ -8,7 +8,7 @@ test('simple boot dir no template', function (t) {
 		view.create(config).then(function(){
 			//test to fail
 			
-		}).fail(function(err){
+		}).catch(function(err){
 			t.pass("simulate failure.");
 			t.equal('template file not found!', err, "missing template fail message should be received.");
 			t.end();
@@ -29,7 +29,7 @@ test('simple boot dir', function (t) {
 			t.ok((html.indexOf('<h1>one</h1>') > -1), "header found");
 			t.ok((html.indexOf('<p>content</p>') > -1), "content found");
 			t.end();
-		}).fail(function(err){
+		}).catch(function(err){
 			console.error(err);
 		});
     
@@ -210,12 +210,14 @@ test('subview rendering', function (t) {
 		}
 		
 		view.create(config).then(function(){
+			//console.log("!!!", view);
 			t.ok(view.subs.subview, "subview in views.subs");
 			t.ok(view.subs.subview.isSub, "views.subs.isSub is true");
 			
 			//console.log(view.subs.subview);
 			var html = view.rhtml.toHTML();
-				
+			
+			//console.log(html);	
 			t.ok((html.indexOf('<em>subcontent</em>') > -1), "subview html rendered");
 			
 			t.end();

@@ -29,14 +29,19 @@ var BaseView = function(options, req, res) {
 		beforeCreate: function(resolve) {
 			//any subs/data.json>base will be merge with the base/data.json>base
 			//a way for sub content push data to the baselayout
+			
 			baseData = this.data.base;
-			if(this.subs['content'].view.preOpt !== undefined) {
+			
+			//console.log(this);
+			
+			if(this.subs['content'] && this.subs['content'].view.preOpt !== undefined) {
 				var data = this.subs['content'].view.preOpt._data;
 				if(data.base !== undefined) {
 					this.data.base = deepmerge(data.base, baseData);
 				}
 			}
-		
+			
+			
 			resolve();
 		}
 		//layout: basedir + '/template.html',
